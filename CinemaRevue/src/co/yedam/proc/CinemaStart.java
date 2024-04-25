@@ -17,6 +17,7 @@ public class CinemaStart {
 			case 2: // 포인트조회
 				break;
 			case 3: // 게시판
+				startBoard();
 				break;
 			default: // 종료
 				System.out.println("종료합니다.");
@@ -26,12 +27,20 @@ public class CinemaStart {
 		System.out.println("<< End Of Program >>");
 	} // end of start()
 
-	public void mainMenuPrint() {
+	private void mainMenuPrint() {
 		String msg = "===========================================================\r\n"//
 				+ "                   영화예매 키오스크 ver 1.0\r\n"
 				+ "-----------------------------------------------------------\r\n" //
 				+ "- 1.영화예매 2.포인트조회 3.게시판 9.종료\r\n"//
 				+ "-----------------------------------------------------------";
 		System.out.println(msg);
+	}
+
+	private void startBoard() {
+		MemberProc mproc = new MemberProc();
+		if (mproc.loginCheck()) {
+			BoardProc bproc = new BoardProc(mproc.getLogId());
+			bproc.exec();
+		}
 	}
 }

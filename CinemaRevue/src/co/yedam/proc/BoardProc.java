@@ -25,7 +25,7 @@ public class BoardProc {
 
 		while (run) {
 			System.out.println("-------------------------------------------------");
-			System.out.println("1.목록 2.등록 3.삭제 9.종료");
+			System.out.println("1.목록 2.등록 3.삭제 9.게시판종료");
 			System.out.println("-------------------------------------------------");
 			menu = ScanUtils.chooseMenu("선택");
 
@@ -41,7 +41,7 @@ public class BoardProc {
 				break;
 			case 9:
 				run = false;
-				System.out.println("종료합니다.");
+				System.out.println("게시판 종료합니다.");
 			}
 		} // end of while.
 	}// end of exec();
