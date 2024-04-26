@@ -30,7 +30,7 @@ public class ExcelExport {
 		headerRow.createCell(2).setCellValue("제목");
 		headerRow.createCell(3).setCellValue("조회수");
 
-		List<BoardVO> list = bdao.boardList(1);
+		List<BoardVO> list = bdao.boardAll(null);
 		for (BoardVO bvo : list) {
 			Row row = sheet.createRow(rowNo++);
 			row.createCell(0).setCellValue(bvo.getBoardNo());
