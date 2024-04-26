@@ -78,6 +78,37 @@ public class BoardDAO extends DAO {
 		return list;
 	}
 
+	public List<BoardVO> boardAll(String keyword) {
+		conn();
+		String sql = "select * from tbl_board where title like '%'||?||'%' order by 1 desc";
+		List<BoardVO> list = new ArrayList<>();
+
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, keyword);
+
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				BoardVO bvo = new BoardVO();
+				bvo.setBoardNo(rs.getInt("board_no"));
+				bvo.setContent(rs.getString("content"));
+				bvo.setTitle(rs.getString("title"));
+				bvo.setViewCnt(rs.getInt("view_cnt"));
+				bvo.setWriteDate(rs.getDate("write_date"));
+				bvo.setWriter(rs.getString("writer"));
+
+				list.add(bvo);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return list;
+	}
+
 	public BoardVO selectBoard(int bno) {
 		conn();
 		String sql = "select * from tbl_board where board_no = ?";
