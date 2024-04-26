@@ -6,6 +6,15 @@ public class ScanUtils {
 	static String NUMBER_EXCEPTION = "숫자를 입력하세요.";
 	static Scanner scn = new Scanner(System.in);
 
+	public static boolean chooseYN(String msg) {
+		System.out.print(msg + ">> ");
+		String str = scn.nextLine();
+		if (str == null || str.equals("") || str.toUpperCase().equals("Y")) {
+			return true;
+		}
+		return false;
+	}
+
 	public static int chooseMenu(String msg) {
 		int menu = -1;
 		while (true) {
