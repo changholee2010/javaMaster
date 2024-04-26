@@ -2,7 +2,7 @@ package co.yedam.proc;
 
 import co.yedam.ScanUtils;
 
-public class CinemaStart {
+public class CinemaRevue {
 
 	public void start() {
 		boolean run = true;
