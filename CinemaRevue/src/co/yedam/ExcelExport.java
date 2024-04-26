@@ -1,6 +1,8 @@
 package co.yedam;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +18,17 @@ import co.yedam.vo.BoardVO;
 
 public class ExcelExport {
 	BoardDAO bdao = new BoardDAO();
+
+	void uploadExcel() {
+		FileInputStream fis;
+		try {
+			fis = new FileInputStream(new File("c:/temp/sampleUpload.xls"));
+			Workbook wb = new HSSFWorkbook(fis);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	void createExcel() {
 		System.out.println("start.");
