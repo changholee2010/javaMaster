@@ -185,5 +185,49 @@ public class EmpDAO extends DAO {
 			disCon();
 		}
 		return map;
+	}//
+
+	// datatable 생성예제.
+	public List<List<String>> getDataTable() {
+		List<List<String>> list = new ArrayList<List<String>>();
+		conn();
+		try {
+			psmt = conn.prepareStatement("select e.* from employees e");
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				List<String> row = new ArrayList<>();
+				row.add(rs.getString("employee_id"));
+				row.add(rs.getString("first_name"));
+				row.add(rs.getString("email"));
+				row.add(rs.getString("phone_number"));
+				row.add(rs.getString("salary"));
+				list.add(row);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return list;
 	}
+
+	// jsp.employees 테이블의 사원번호값을 찾아서 한건 삭제하는 기능추가.
+	public boolean deleteEmployee(int eno) {
+		conn();
+		String sql = "delete from employees";//
+		sql += "      where employee_id=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, eno);
+			int r = psmt.executeUpdate();
+			if (r > 0)
+				return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return false;
+	}
+
 }

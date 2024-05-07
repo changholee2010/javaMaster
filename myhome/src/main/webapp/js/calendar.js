@@ -9,13 +9,18 @@ function initForm() {
 	document.querySelector('#show>table')//
 		.appendChild(svc.makeHeader2());
 	document.querySelector('#show>table')//
-		.appendChild(svc.makeBody(6));
+		.appendChild(svc.makeBody(5));
 }
 
 const svc = {
+	// <table><caption></caption></table>
 	makeTable: function() {
 		let tbl = document.createElement('table');
 		tbl.setAttribute('border', "2");
+		let cap = document.createElement('caption');
+		cap.innerHTML = '월달';
+		tbl.appendChild(cap);
+		console.log(tbl);
 		return tbl;
 	},
 	makeHeader: function() {
@@ -44,6 +49,7 @@ const svc = {
 		return thd;
 	},
 	makeBody: function(month = 5) {
+		document.querySelector('caption').innerHTML = month + "월";
 		let tbd = document.createElement('tbody');
 		let tr = document.createElement('tr');
 		let spaces = this.getFirstDate(month)// => 1일의 위치.
@@ -67,19 +73,15 @@ const svc = {
 		return tbd;
 	},
 	getFirstDate(month) {
-		switch (month) {
-			case 5:
-				return 3;
-			case 6:
-				return 6;
-		}
+		// Date 객체 활용해서 계산.
+		let today = new Date(2024, month - 1, 1);
+		console.log('요일의 위치: ', today.getDay());
+		return today.getDay();
+
 	},
 	getLastDate(month) {
-		switch (month) {
-			case 5:
-				return 31;
-			case 6:
-				return 30;
-		}
+		// Date 객체 활용해서 계산.
+		let today = new Date(2024, month, 0);
+		return today.getDate();
 	}
 } // end of svc.
