@@ -33,7 +33,7 @@ public class EmpJson extends HttpServlet {
 		Map<String, Object> map = new HashMap<>();
 		Gson gson = new GsonBuilder().create();
 
-		if (job.equals("add")) {
+		if (job.equals("add")) { // 추가...
 			String a = req.getParameter("name");
 			String b = req.getParameter("phone");
 			String d = req.getParameter("hire");
@@ -56,7 +56,7 @@ public class EmpJson extends HttpServlet {
 				resp.getWriter().print(gson.toJson(map));
 			}
 
-		} else if (job.equals("edit")) {
+		} else if (job.equals("edit")) { // 수정...
 			evo.setEmpNo(Integer.parseInt(eno));
 			evo.setSalary(Integer.parseInt(c));
 			evo.setEmail(e);
@@ -73,7 +73,7 @@ public class EmpJson extends HttpServlet {
 			}
 			resp.getWriter().print(gson.toJson(map));
 
-		} else if (job.equals("delete")) {
+		} else if (job.equals("delete")) { // 삭제...
 
 			if (edao.deleteEmp(Integer.parseInt(eno))) {
 				// {"retCode": "OK"}

@@ -35,11 +35,11 @@ function addRow() {
 	let esalary = document.querySelector('#esalary').value;
 	let email = document.querySelector('#email').value;
 
-	let param = '../empsave.json?job=add&name=' + ename + '&phone=' + ephone//
+	let param = 'job=add&name=' + ename + '&phone=' + ephone//
 		+ '&salary=' + esalary + '&hire=' + ehire + '&email=' + email;
-	addHtp.open('get', param);
-	//addHtp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	addHtp.send();
+	addHtp.open('post', '../empsave.json');
+	addHtp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	addHtp.send(param);
 	addHtp.onload = function() {
 		let result = JSON.parse(addHtp.responseText);
 		console.log(result);

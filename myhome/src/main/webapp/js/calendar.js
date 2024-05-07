@@ -6,8 +6,10 @@ document.addEventListener("DOMContentLoaded", initForm);
 function initForm() {
 	let show = document.querySelector('#show');
 	show.appendChild(svc.makeTable());
-	document.querySelector('#show>table').appendChild(svc.makeHeader2());
-	document.querySelector('#show>table').appendChild(svc.makeBody());
+	document.querySelector('#show>table')//
+		.appendChild(svc.makeHeader2());
+	document.querySelector('#show>table')//
+		.appendChild(svc.makeBody(6));
 }
 
 const svc = {
@@ -41,17 +43,17 @@ const svc = {
 
 		return thd;
 	},
-	makeBody: function() {
+	makeBody: function(month = 5) {
 		let tbd = document.createElement('tbody');
 		let tr = document.createElement('tr');
-		let spaces = 1;
+		let spaces = this.getFirstDate(month)// => 1일의 위치.
 		for (let i = 0; i < spaces; i++) {
 			let td = document.createElement('td');
 			td.innerHTML = " ";
 			tr.appendChild(td);
 		}
 		// 날짜 출력해주는 부분.
-		for (let d = 1; d <= 30; d++) {
+		for (let d = 1; d <= this.getLastDate(month); d++) { // getLastDate(month) => 월의 마지마날을 반환.
 			let td = document.createElement('td');
 			td.innerHTML = d;
 			tr.appendChild(td);
@@ -63,5 +65,21 @@ const svc = {
 		}
 		tbd.appendChild(tr);
 		return tbd;
+	},
+	getFirstDate(month) {
+		switch (month) {
+			case 5:
+				return 3;
+			case 6:
+				return 6;
+		}
+	},
+	getLastDate(month) {
+		switch (month) {
+			case 5:
+				return 31;
+			case 6:
+				return 30;
+		}
 	}
 } // end of svc.
