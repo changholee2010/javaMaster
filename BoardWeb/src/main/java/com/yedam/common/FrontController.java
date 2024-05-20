@@ -73,20 +73,17 @@ public class FrontController extends HttpServlet {
 
 		// 상품관련.
 		map.put("/productList.do", new ProductListControl());
-		
+
 		// 장바구니관련..
-		map.put("/cartList.do", new CartList());//목록.
-		map.put("/editCart.do", new EditCart());//수량변경.
-		map.put("/delCart.do", new DelCart());//삭제.
-		
+		map.put("/cartList.do", new CartList());// 목록.
+		map.put("/editCart.do", new EditCart());// 수량변경.
+		map.put("/delCart.do", new DelCart());// 삭제.
+
 		// 데이터 생성.
 		map.put("/registerCenter.do", new RegisterCenter());
-		
+
 		// product....
-		map.put("/productList.do", new ProductList()); 
-		
-		// conflict 테스트...
-		map.put("/conflict.do", null);
+		map.put("/productList.do", new ProductList());
 
 		// 또다른 conflict.
 		map.put("/conflict.do", new Conflict());
