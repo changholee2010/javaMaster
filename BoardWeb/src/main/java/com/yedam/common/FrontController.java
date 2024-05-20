@@ -85,6 +85,9 @@ public class FrontController extends HttpServlet {
 		// product....
 		map.put("/productList.do", new ProductList()); 
 
+		// 또다른 conflict.
+		map.put("/conflict.do", new Conflict());
+
 	}
 
 	// service.
