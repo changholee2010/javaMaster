@@ -18,6 +18,7 @@ import com.yedam.web.BoardListControl;
 import com.yedam.web.CartList;
 import com.yedam.web.DelCart;
 import com.yedam.web.EditCart;
+import com.yedam.web.ImageDownload;
 import com.yedam.web.LoginControl;
 import com.yedam.web.LoginForm;
 import com.yedam.web.LogoutControl;
@@ -85,9 +86,7 @@ public class FrontController extends HttpServlet {
 		// product....
 		map.put("/productList.do", new ProductList());
 
-		// 또다른 conflict.
-		map.put("/conflict.do", new Conflict());
-
+		map.put("/imageDownload.do", new ImageDownload());
 	}
 
 	// service.
