@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+let str = `[{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000122.jpg?1591926457","name":"헬리녹스 테이블원 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000102.jpg?1524462712","name":"헬리녹스 테이블원 / 블랙아웃에디션 ★★"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000152.jpg?1648013712","name":"헬리녹스 테이블원 하드탑 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000652.jpg?1682481781","name":"테이블원 하드탑 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000632.jpg?1680584508","name":"테이블원 하드탑 / 멀티 블록 2023"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000702.jpg?1685605920","name":"테이블원 하드탑 / 블랙 타이다이"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000622.jpg?1679623400","name":"테이블원 하드탑 / 레인보우 반다나 퀼트"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000582.jpg?1651212438","name":"헬리녹스 테이블원 하드탑 / 블루 반다나 퀼트"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000562.jpg?1650447422","name":"헬리녹스 테이블원 하드탑 / 블랙아웃 에디션"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000062.jpg?1533704494","name":"헬리녹스 테이블원 하드탑 라지 / 블랙아웃에디션 ★★"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000662.jpg?1682481829","name":"테이블원 하드탑 라지 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000712.jpg?1685606170","name":"테이블원 하드탑 라지 / 블랙 타이다이"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000612.jpg?1679551186","name":"테이블원 하드탑 라지 / 레인보우 반다나 퀼트"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000602.jpg?1652837808","name":"헬리녹스 카페 테이블 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000592.jpg?1652837785","name":"헬리녹스 카페 테이블 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000732.jpg?1687329594","name":"카페 테이블 와이드 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000722.jpg?1687329565","name":"카페 테이블 와이드 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000752.jpg?1708497866","name":"테이블포 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000742.jpg?1708496908","name":"테이블포 / 코요테탄"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000402.jpg?1594617639","name":"헬리녹스 사이드 테이블 스몰 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000092.jpg?1555568777","name":"헬리녹스 테이블원 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000162.jpg?1524462706","name":"헬리녹스 테이블원 하드탑 라지 / 블랙"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000642.jpg?1680584634","name":"테이블원 하드탑 라지 / 멀티 블록 2023"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000572.jpg?1651212477","name":"헬리녹스 테이블원 하드탑 라지 / 블루 반다나 퀼트"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000512.jpg?1675046080","name":"헬리녹스 사이드 테이블 스몰 / 퍼티"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000502.jpg?1618394489","name":"헬리녹스 사이드 테이블 미디움 / 퍼티"},{"src":"http://www.helinoxstore.co.kr/shopimages/helinox/0010070000412.jpg?1594617747","name":"헬리녹스 사이드 테이블 미디움 / 블랙"}]`;
+console.log(JSON.parse(str));
+
+fetch('imageDownload.do', {
+	method:'post',
+	headers: {'Content-Type': 'application/json'},
+	body: str
+})
+.then(result => result.json())
+.then(result => {
+	console.log(result);
+})
+.catch(err => {
+	console.log(err);
+})
+</script>
+</body>
+</html>

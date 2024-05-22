@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<script>
+		let url =
+			'https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&serviceKey=qCwQYxNXeK%2FaB1Ngf9oNZDttjmjQ6ku1OdR6%2Fd0Jj5EIdqOxMXolplih%2BYjTqB4uxCuK636co3tf9T5%2Fr9OLvw%3D%3D';
+
+		async function uploadJson() {
+			try {
+
+				let resolve = await fetch(url);
+				let result = await resolve.json();
+				let data = result.data;
+				console.log(data);
+
+				resolve = await fetch('registerCenter.do', {
+					method: 'post',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(data) // 객체 -> json문자열.
+				});
+				result = await resolve.text();
+				console.log(result);
+				alert('처리된 건수 ' + result);
+			} catch (err) {
+				console.log(err);
+			}
+		}
+		uploadJson();
+	</script>
+</body>
+
+</html>
