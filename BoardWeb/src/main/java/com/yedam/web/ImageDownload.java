@@ -1,11 +1,15 @@
 package com.yedam.web;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -33,20 +37,25 @@ public class ImageDownload implements Control {
 		for (Map<String, String> map : list) {
 			String src = map.get("src");
 			String name = map.get("name");
-			String[] str = name.split("/");
-			String dir = str[0];
-			name = str[1];
+			// String[] str = name.split("/");
+			// String dir = str[0];
+			// name = str[1];
+			String dir = "dongwon";
 
 			System.out.println("src: " + src + ", dir: " + dir + ", name: " + name);
 			System.out.println("-----------------------------");
+//			fileCreate(src, dir, name);
+			dongwonCreate(src, dir, name);
 
 		}
 		System.out.println("end of prog.");
 
 	}
 
-	public void fileCreate(String src, String name) {
+	public void dongwonCreate(String src, String dir, String name) {
 		URL url;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH_mm");
+
 		try {
 			url = new URL(src);
 
@@ -54,14 +63,55 @@ public class ImageDownload implements Control {
 			OutputStream os = null;
 
 			is = url.openStream();
-			os = new FileOutputStream("c:/temp/" + name + ".jpg");
+			BufferedInputStream bis = new BufferedInputStream(is);
+			String filePath = "c:/temp/" + sdf.format(new Date()) + "/" + dir.trim();
 
+			File file = new File(filePath);
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			os = new BufferedOutputStream(new FileOutputStream(filePath + "/" + name.trim() + ".jpg"));
 			while (true) {
-				int data = is.read();
+				int data = bis.read();
 				if (data == -1) {
 					break;
 				}
 				os.write(data);
+				os.flush();
+			}
+			is.close();
+			os.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void fileCreate(String src, String dir, String name) {
+		URL url;
+		SimpleDateFormat sdf = new SimpleDateFormat("HH_mm");
+
+		try {
+			url = new URL(src);
+
+			InputStream is = null;
+			OutputStream os = null;
+
+			is = url.openStream();
+			BufferedInputStream bis = new BufferedInputStream(is);
+			String filePath = "c:/temp/" + sdf.format(new Date()) + "/" + dir.trim();
+
+			File file = new File(filePath);
+			if (!file.exists()) {
+				file.mkdirs();
+			}
+			os = new BufferedOutputStream(new FileOutputStream(filePath + "/" + name.trim() + ".jpg"));
+			while (true) {
+				int data = bis.read();
+				if (data == -1) {
+					break;
+				}
+				os.write(data);
+				os.flush();
 			}
 			is.close();
 			os.close();
