@@ -1,6 +1,7 @@
 package com.yedam.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchVO;
 import com.yedam.vo.CartVO;
@@ -24,4 +25,5 @@ public interface ReplyMapper {
 	int deleteCart(int no);
 	
 	int insertCenter(CenterVO[] array);
+	List<Map<String, String>> cateList();
 }

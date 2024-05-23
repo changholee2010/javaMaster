@@ -1,6 +1,7 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -54,6 +55,12 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public int addCenter(CenterVO[] array) {
 		return mapper.insertCenter(array);
+	}
+
+	@Override
+	public List<Map<String, String>> categoryList() {
+		// TODO Auto-generated method stub
+		return mapper.cateList();
 	}
 
 }

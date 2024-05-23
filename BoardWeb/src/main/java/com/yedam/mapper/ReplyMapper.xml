@@ -67,5 +67,24 @@
       #{center.id}, #{center.centerName}, #{center.sido}, #{center.phoneNumber}, #{center.address}, #{center.centerType}
     </foreach>
   </insert>
+  
+  <select id="cateList" resultType="map">
+ select case when nvl(category_no_ref, 0) = 0 then '대분류'
+            else ''
+       end as "cate_col1",
+       case when nvl(category_no_ref, 0) = 0 then category_name
+            else ''
+       end as "cate_col2",
+       case when nvl(category_no_ref, 0) = 0 then ''
+            else '소분류'
+       end as "cate_col3",
+       case when nvl(category_no_ref, 0) = 0 then ''
+            else category_name
+       end as "cate_col4"
+from category c
+start with category_no_ref is null
+connect by category_no_ref = prior category_no
+order siblings by category_no
+  </select>
 
 </mapper>

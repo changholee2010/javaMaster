@@ -48,6 +48,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// url패턴과 실행할 Control 구현클래스 정의.
 		map.put("/main.do", new MainControl());
+		map.put("/cate.do", new CateControl());
 //		map.put("/boardList.do", new BoardListControl());
 		map.put("/addForm.do", new AddFormControl()); // 글등록화면.
 		map.put("/addBoard.do", new AddBoardControl());

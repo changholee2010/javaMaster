@@ -1,6 +1,7 @@
 package com.yedam.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.yedam.common.SearchVO;
 import com.yedam.vo.CartVO;
@@ -19,5 +20,6 @@ public interface ReplyService {
 	boolean removeCart(int no);
 	
 	int addCenter(CenterVO[] array);
+	List<Map<String, String>> categoryList();
 	
 }
