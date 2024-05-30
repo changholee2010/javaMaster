@@ -31,8 +31,14 @@ public class LoginControl implements Control {
 			// 관리자, 회원.
 			if (mvo.getUserResp().equals("Admin"))
 				resp.sendRedirect("memberList.do");
-			else
+			else {
+				String reqPath = (String) session.getAttribute("reqPath");
+				if (reqPath != null) {
+					resp.sendRedirect(reqPath);
+					return;
+				}
 				resp.sendRedirect("main.do");
+			}
 
 		} else {
 			resp.sendRedirect("logForm.do");

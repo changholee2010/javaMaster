@@ -46,6 +46,7 @@ public class FrontController extends HttpServlet {
 	// init.
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		// localhost:8080/BoardWeb/board/
 		// url패턴과 실행할 Control 구현클래스 정의.
 		map.put("/main.do", new MainControl());
 		map.put("/cate.do", new CateControl());
@@ -74,7 +75,7 @@ public class FrontController extends HttpServlet {
 		map.put("/memberList.do", new MemberListControl());
 
 		// 상품관련.
-		map.put("/productList.do", new ProductListControl());
+		map.put("/product/productList.do", new ProductListControl());
 
 		// 장바구니관련..
 		map.put("/cartList.do", new CartList());// 목록.
@@ -85,8 +86,7 @@ public class FrontController extends HttpServlet {
 		map.put("/registerCenter.do", new RegisterCenter());
 
 		// product....
-		map.put("/productList.do", new ProductList());
-
+//		map.put("/productList.do", new ProductList());
 		map.put("/imageDownload.do", new ImageDownload());
 	}
 

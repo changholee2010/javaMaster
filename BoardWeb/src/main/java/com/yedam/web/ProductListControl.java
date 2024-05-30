@@ -14,7 +14,7 @@ public class ProductListControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String path = "product/productList.tiles";
+		String path = "productList.tiles";
 //		req.getRequestDispatcher(path).forward(req, resp);
 		HttpUtils.forward(req, resp, path);
 	}

@@ -27,7 +27,7 @@
       </c:forEach>
     </table>
   </div>
-
+<a href="main.do">main</a>
 </body>
 
 </html>

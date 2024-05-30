@@ -34,7 +34,7 @@ public class ResponseFilter implements Filter {
 
 		if (resp.indexOf(path) != -1) {
 			// 권한체크를 해야하는 대상입니다.
-			request.setAttribute("logPath", "/logForm.do");
+			request.setAttribute("redirectPath", "/logForm.do");
 			// ((HttpServletResponse) response).sendRedirect("logForm.do");
 		}
 
