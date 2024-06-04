@@ -1,7 +1,7 @@
 select *
 from tab;
 
--- »ç¿øÅ×ÀÌºí(»ç¿ø¹øÈ£, »ç¿ø¸í, ¿¬¶ôÃ³, ÀÌ¸ŞÀÏ, ÀÔ»çÀÏÀÚ, ±Ş¿©)
+-- ì‚¬ì›í…Œì´ë¸”(ì‚¬ì›ë²ˆí˜¸, ì‚¬ì›ëª…, ì—°ë½ì²˜, ì´ë©”ì¼, ì…ì‚¬ì¼ì, ê¸‰ì—¬)
 drop table emp purge;
 create table emp (
   emp_no number primary key -- emp_seq.nextval
@@ -22,7 +22,7 @@ values(emp_seq.nextval, 'kildongPark', '01-3333-5678', 'pkildong@email', 2300);
 
 select *
 from emp
---where emp_name like '%±æµ¿%'
+--where emp_name like '%ê¸¸ë™%'
 order by emp_no;
 
 update emp
@@ -45,9 +45,9 @@ create table tbl_member (
  member_pw varchar2(10) not null,
  member_name varchar2(50) not null
 );
-insert into tbl_member values('user01','1111','È«±æµ¿');
-insert into tbl_member values('user02','1111','±è¼º±Ù');
-insert into tbl_member values('user03','1111','ÃÖ±Ù¼®');
+insert into tbl_member values('user01','1111','í™ê¸¸ë™');
+insert into tbl_member values('user02','1111','ê¹€ì„±ê·¼');
+insert into tbl_member values('user03','1111','ìµœê·¼ì„');
 
 create sequence board_seq;
 create table tbl_board (
@@ -69,17 +69,17 @@ insert into tbl_board(board_no, title, content, writer)
 values (board_seq.nextval, 'veryverygoodverynice3', 'nice content1', 'user03');
 
 insert into tbl_board(board_no, title, content, writer)
-values (board_seq.nextval, 'ÀÏÀÌ»ï»ç¿ÀÀ°Ä¥ÆÈ±¸°øÀÏÀÌ»ï»ç¿ÀÀ°Ä¥ÆÈ±¸°øÀÏÀÌ»ï»ç¿ÀÀ°Ä¥ÆÈ±¸°ø', 'nice content1', 'user03');
+values (board_seq.nextval, 'ì¼ì´ì‚¼ì‚¬ì˜¤ìœ¡ì¹ íŒ”êµ¬ê³µì¼ì´ì‚¼ì‚¬ì˜¤ìœ¡ì¹ íŒ”êµ¬ê³µì¼ì´ì‚¼ì‚¬ì˜¤ìœ¡ì¹ íŒ”êµ¬ê³µ', 'nice content1', 'user03');
 insert into tbl_board(board_no, title, content, writer)
-values (board_seq.nextval, 'ÀÏÀÌ»ï»ç¿À', 'nice content1', 'user03');
+values (board_seq.nextval, 'ì¼ì´ì‚¼ì‚¬ì˜¤', 'nice content1', 'user03');
 insert into tbl_board(board_no, title, content, writer)
-values (board_seq.nextval, 'ÀÏÀÌ»ï»ç¿Àtesting', 'nice content1', 'user03');
+values (board_seq.nextval, 'ì¼ì´ì‚¼ì‚¬ì˜¤testing', 'nice content1', 'user03');
 
 insert into tbl_board(board_no, title, content, writer)
-values (board_seq.nextval, 'ÀÚ¹Ùtesting', 'nice content1', 'user02');
+values (board_seq.nextval, 'ìë°”testing', 'nice content1', 'user02');
 
 insert into tbl_board(board_no, title, content, writer)
-values (board_seq.nextval, 'À¥ÇÁ·Î±×·¥', 'À¥ÇÁ·Î±×·¥Àº... content1', 'user02');
+values (board_seq.nextval, 'ì›¹í”„ë¡œê·¸ë¨', 'ì›¹í”„ë¡œê·¸ë¨ì€... content1', 'user02');
 
 insert into tbl_board(board_no, title, content, writer)
 select board_seq.nextval, title, content, writer
@@ -107,16 +107,16 @@ create table tbl_reply (
  reply_date date default sysdate
 );
 insert into tbl_reply (reply_no, reply, replyer, board_no)
-values(reply_seq.nextval, '´ñ±Û1', 'user03', 1);
+values(reply_seq.nextval, 'ëŒ“ê¸€1', 'user03', 1);
 insert into tbl_reply (reply_no, reply, replyer, board_no)
-values(reply_seq.nextval, '´ñ±Û2', 'user02', 1);
+values(reply_seq.nextval, 'ëŒ“ê¸€2', 'user02', 1);
 
 insert into tbl_reply (reply_no, reply, replyer, board_no)
-values(reply_seq.nextval, '´ñ±Û11', 'user03', 2);
+values(reply_seq.nextval, 'ëŒ“ê¸€11', 'user03', 2);
 insert into tbl_reply (reply_no, reply, replyer, board_no)
-values(reply_seq.nextval, '´ñ±Û22', 'user02', 3);
+values(reply_seq.nextval, 'ëŒ“ê¸€22', 'user02', 3);
 
---¿µÈ­Á¤º¸
+--ì˜í™”ì •ë³´
 drop table tbl_movie purge;
 create table tbl_movie (
  movie_code varchar2(10) primary key,
@@ -126,21 +126,21 @@ create table tbl_movie (
  genre varchar2(30)
 );
 insert into tbl_movie (movie_code, movie_name, director_name, movie_type, genre)
-values('M001', '¹üÁËµµ½Ã', '°¨µ¶1', '18¼¼ÀÌ»ó', '¾×¼Ç');
+values('M001', 'ë²”ì£„ë„ì‹œ', 'ê°ë…1', '18ì„¸ì´ìƒ', 'ì•¡ì…˜');
 insert into tbl_movie (movie_code, movie_name, director_name, movie_type, genre)
-values('M002', 'ÄôÇªÆÒ´õ', '±èÄôÇª', '12¼¼ÀÌ»ó', '¾Ö´Ï¸ŞÀÌ¼Ç');
+values('M002', 'ì¿µí‘¸íŒ¬ë”', 'ê¹€ì¿µí‘¸', '12ì„¸ì´ìƒ', 'ì• ë‹ˆë©”ì´ì…˜');
 insert into tbl_movie (movie_code, movie_name, director_name, movie_type, genre)
-values('M003', 'Ã§¸°Àú½º', 'Ã§¸°Àú', '15¼¼ÀÌ»ó', '·Î¸Ç½º');
+values('M003', 'ì±Œë¦°ì €ìŠ¤', 'ì±Œë¦°ì €', '15ì„¸ì´ìƒ', 'ë¡œë§¨ìŠ¤');
 insert into tbl_movie (movie_code, movie_name, director_name, movie_type, genre)
-values('M004', 'ÆÄ¹¦', '±èÆÄÇ¥', '18¼¼ÀÌ»ó', '°øÆ÷');
+values('M004', 'íŒŒë¬˜', 'ê¹€íŒŒí‘œ', '18ì„¸ì´ìƒ', 'ê³µí¬');
 insert into tbl_movie (movie_code, movie_name, director_name, movie_type, genre)
-values('M005', '½ºÅÏÆ®¸Ç', '±è¾×¼Ç', '18¼¼ÀÌ»ó', '¾×¼Ç');
+values('M005', 'ìŠ¤í„´íŠ¸ë§¨', 'ê¹€ì•¡ì…˜', '18ì„¸ì´ìƒ', 'ì•¡ì…˜');
 
---»ó¿µÁ¤º¸
+--ìƒì˜ì •ë³´
 create table tbl_runtime (
  movie_code varchar2(10) not null,
  running_type char(1) default 'N',
- running_room char(1) --»ó¿µ°ü(1,2,3,4)
+ running_room char(1) --ìƒì˜ê´€(1,2,3,4)
 );
 insert into tbl_runtime values('M001', 'Y', '1');
 insert into tbl_runtime values('M002', 'Y', '2');
@@ -159,7 +159,7 @@ where running_type='Y'
 order by r.running_room;
 
 
---¿¹¸ÅÁ¤º¸
+--ì˜ˆë§¤ì •ë³´
 create table tbl_reservation (
  reservation_no number primary key,
  movie_code varchar2(10) not null,
