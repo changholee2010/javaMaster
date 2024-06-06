@@ -1,11 +1,14 @@
 package co.yedam.dao;
 
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.yedam.vo.BoardVO;
 import co.yedam.vo.ReplyVO;
+import oracle.jdbc.OracleTypes;
+import oracle.jdbc.internal.OracleCallableStatement;
 
 public class ReplyDAO extends DAO {
 
@@ -74,5 +77,24 @@ public class ReplyDAO extends DAO {
 		}
 		return false;
 	}
+
+	// 커서반환값 받기.
+	public void getCursor() {
+		conn();
+		try {
+			CallableStatement csmt = conn.prepareCall("begin create_order_item_proc(?,?); end; ");
+			csmt.setString(1, "202406");
+			csmt.registerOutParameter(2, OracleTypes.CURSOR);
+			csmt.executeQuery();
+			OracleCallableStatement ocsmt = (OracleCallableStatement) csmt;
+			ResultSet rs = ocsmt.getCursor(2);
+			while (rs.next()) {
+				System.out.println(rs.getString(1));
+			}
+			System.out.println("end of while");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	} // end of getCursor.
 
 }

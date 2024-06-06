@@ -1,8 +1,10 @@
 package co.yedam;
 
+import co.yedam.dao.ReplyDAO;
+
 public class AppTest {
 	public static void main(String[] args) {
-		ExcelExport excel = new ExcelExport();
-		excel.createExcel();
+		ReplyDAO rdao = new ReplyDAO();
+		rdao.getCursor();
 	}
 }
