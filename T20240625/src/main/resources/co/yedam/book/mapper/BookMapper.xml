@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.yedam.book.mapper.BookMapper">
+
+	<select id="selectMessage" resultType="string">
+	  select '시험시간은 ' || ' 14:00 ~ 17:00. 현재시간은 ' || to_char(sysdate, 'yyyy-mm-dd hh24:mi:ss')  
+	  from dual
+	</select>
+
+
+</mapper>
