@@ -3,15 +3,15 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="myapp.homepage" template="/WEB-INF/layout/template.jsp">
+  <definition name="mybook" template="/WEB-INF/layout/template.jsp">
     <put-attribute name="title" value="book page using Tiles" />
     <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
     <put-attribute name="body" value="/WEB-INF/layout/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>
 
-  <definition name="WILDCARD:board/*" extends="myapp.homepage">
-    <put-attribute name="body" value="/WEB-INF/view/{1}.jsp" />
+  <definition name="WILDCARD:book/*" extends="mybook">
+    <put-attribute name="body" value="/WEB-INF/view/book/{1}.jsp" />
   </definition>
 
 </tiles-definitions>

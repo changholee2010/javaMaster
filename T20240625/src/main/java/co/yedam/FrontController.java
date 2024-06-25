@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.yedam.book.web.AddBook;
 import co.yedam.book.web.BookForm;
 import co.yedam.book.web.BookList;
+import co.yedam.book.web.MainControl;
+import co.yedam.book.web.RemoveBook;
 import co.yedam.common.Control;
 
 // init -> service -> destroy.
@@ -27,8 +30,16 @@ public class FrontController extends HttpServlet {
 	// init. 최초한번 실행.
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		controls.put("bookForm.do", new BookForm());
-		
+		controls.put("/main.do", new MainControl());
+		// 화면열기.
+		controls.put("/bookForm.do", new BookForm());
+		// 목록요청 json.
+		controls.put("/bookListJson.do", new BookList());
+		// 삭제요청 json.
+		controls.put("/removeBook.do", new RemoveBook());
+		// 등록요청 json.
+		controls.put("/addBook.do", new AddBook());
+
 	}
 
 	// service. 요청때마다 실행.
