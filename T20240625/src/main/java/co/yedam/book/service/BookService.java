@@ -6,7 +6,7 @@ import co.yedam.book.vo.BookVO;
 
 public interface BookService {
 	String cheeringMessage();
-	String hintMessage();
+	String hintMessage(String remainTimeString);
 	// 목록
 	List<BookVO> bookList();
 	// 추가

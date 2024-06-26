@@ -16,6 +16,13 @@
 <body>
   <h3>${message }</h3>
   <h3 class="hint">hint: ${hint }</h3>
+
+  <script>
+    setInterval(function () {
+      location.href = "main.do";
+    }, 5000);
+    
+  </script>
 </body>
 
 </html>

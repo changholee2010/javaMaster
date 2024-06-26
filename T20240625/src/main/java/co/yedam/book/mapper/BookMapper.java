@@ -6,7 +6,7 @@ import co.yedam.book.vo.BookVO;
 
 public interface BookMapper {
 	String selectMessage();
-	String selectHint();
+	String selectHint(String remainTimeString);
 	//추가.
 	int insertBook(BookVO bvo);
 	//삭제.

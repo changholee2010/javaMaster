@@ -18,8 +18,8 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public String hintMessage() {
-		return mapper.selectHint();
+	public String hintMessage(String remainTimeString) {
+		return mapper.selectHint(remainTimeString);
 	}
 
 	@Override
