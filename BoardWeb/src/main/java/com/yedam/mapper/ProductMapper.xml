@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.yedam.mapper.ProductMapper">
+
+	<delete id="deleteProdAll">
+  	delete from template_prod
+	</delete>
+
+	<insert id="insertTemplate" parameterType="com.yedam.vo.TemplateVO">
+		insert into template_prod (prod_no, prod_code, prod_name, prod_desc, prod_content, prod_img1, prod_img2, prod_img3, trial_no) 
+		<foreach collection="array" item="prod" open="select prod_seq.nextval, a.* from ( " close=" ) a" separator=" union all " >
+		  select #{prod.prodCode}, #{prod.prodName}, #{prod.prodDesc}, #{prod.prodContent}, #{prod.prodImg1}, #{prod.prodImg2}, #{prod.prodImg3}, to_char(sysdate, 'rrrr-mm-dd-hh24-mi') from dual
+		</foreach>
+	</insert>
+
+	<insert id="insertTemplate1" parameterType="com.yedam.vo.TemplateVO">
+		insert into template_prod (prod_no, prod_code, trial_no) 
+		<foreach collection="array" item="prod" open="select prod_seq.nextval, a.* from ( " close=" ) a" separator=" union all " >
+		  select #{prod.prodCode}, to_char(sysdate, 'rrrr-mm-dd-hh24-mi') from dual
+		</foreach>
+	</insert>
+
+</mapper>
