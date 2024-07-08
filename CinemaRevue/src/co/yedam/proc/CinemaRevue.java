@@ -17,8 +17,8 @@ public class CinemaRevue {
 			case 2: // 포인트조회
 				break;
 			case 3: // 게시판
-//				startBoard();
 				BoardProc.getInstance().exec();
+//				startBoard();
 				break;
 			default: // 종료
 				System.out.println("종료합니다.");
