@@ -2,26 +2,48 @@ package co.yedam.proc;
 
 import java.util.List;
 
-import co.yedam.ScanUtils;
+import co.yedam.common.ScanUtils;
 import co.yedam.dao.BoardDAO;
 import co.yedam.dao.ReplyDAO;
 import co.yedam.vo.BoardVO;
+import co.yedam.vo.MemberVO;
 import co.yedam.vo.ReplyVO;
 
 public class BoardProc {
+
+	private static BoardProc instance;
 
 	private String logid;
 	BoardDAO bdao = new BoardDAO();
 	ReplyDAO rdao = new ReplyDAO();
 
-	public BoardProc(String logid) {
-		this.logid = logid;
+	private BoardProc() {
+
+	}
+
+	// CinemaRevue에서 로그인 기능을 사용할 경우에는 필요한 생성자.
+	public BoardProc(String id) {
+		logid = id;
+	}
+
+	// singleton instance 생성.
+	public static BoardProc getInstance() {
+		if (instance == null) {
+			instance = new BoardProc();
+		}
+		return instance;
 	}
 
 	// 처음 실행되는 메소드.
 	public void exec() {
+
 		int menu = -1;
 		boolean run = true;
+
+		if (!loginCheck()) {
+			System.out.println("프로그램을 종료합니다.");
+			return;
+		}
 
 		while (run) {
 			System.out.println("-------------------------------------------------");
@@ -45,6 +67,27 @@ public class BoardProc {
 			}
 		} // end of while.
 	}// end of exec();
+
+	// login check.
+	public boolean loginCheck() {
+		int loginCnt = 3;
+
+		// 로그인체크.
+		while (loginCnt-- > 0) {
+			String id = ScanUtils.chooseVal("아이디");
+			String pw = ScanUtils.chooseVal("비밀번호");
+			MemberVO mvo = bdao.selectMember(id, pw);
+			if (mvo != null) {
+				System.out.println(mvo.getMemberName() + "님 환영합니다.");
+				logid = id;
+				return true;
+			}
+			if (loginCnt > 0)
+				System.out.println("id와 pw를 확인하세요.");
+		}
+		return false;
+
+	}
 
 	// 글목록보기.
 	void boardList() {

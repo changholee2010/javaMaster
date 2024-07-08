@@ -2,7 +2,7 @@ package co.yedam.proc;
 
 import java.util.List;
 
-import co.yedam.ScanUtils;
+import co.yedam.common.ScanUtils;
 import co.yedam.dao.CinemaDAO;
 import co.yedam.vo.MovieVO;
 import co.yedam.vo.ReservationVO;

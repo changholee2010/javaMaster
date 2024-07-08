@@ -1,6 +1,6 @@
 package co.yedam.proc;
 
-import co.yedam.ScanUtils;
+import co.yedam.common.ScanUtils;
 
 public class CinemaRevue {
 
@@ -17,7 +17,8 @@ public class CinemaRevue {
 			case 2: // 포인트조회
 				break;
 			case 3: // 게시판
-				startBoard();
+//				startBoard();
+				BoardProc.getInstance().exec();
 				break;
 			default: // 종료
 				System.out.println("종료합니다.");
@@ -36,6 +37,7 @@ public class CinemaRevue {
 		System.out.println(msg);
 	}
 
+	// 로그인 기능을 CinemaRevue에서 구현할 경우.
 	private void startBoard() {
 		MemberProc mproc = new MemberProc();
 		if (mproc.loginCheck()) {

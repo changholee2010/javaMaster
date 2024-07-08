@@ -1,4 +1,4 @@
-package co.yedam;
+package co.yedam.common;
 
 import java.io.File;
 import java.io.FileInputStream;

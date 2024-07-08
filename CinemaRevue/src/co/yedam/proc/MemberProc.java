@@ -1,6 +1,6 @@
 package co.yedam.proc;
 
-import co.yedam.ScanUtils;
+import co.yedam.common.ScanUtils;
 import co.yedam.dao.BoardDAO;
 import co.yedam.vo.MemberVO;
 
