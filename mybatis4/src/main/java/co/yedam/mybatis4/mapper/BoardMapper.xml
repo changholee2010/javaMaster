@@ -4,12 +4,25 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="co.yedam.mybatis4.mapper.BoardMapper">
 
-  <select id="boardList" resultType="co.yedam.mybatis4.vo.BoardVO">
+  <select id="boardList" resultType="co.yedam.mybatis4.vo.BoardVO" parameterType="co.yedam.mybatis4.vo.SearchVO">
     select * from tbl_board
+    <where> 
+    <choose>
+      <when test="searchCondition == 'T'.toString() ">
+      title like '%'||#{keyword}||'%'
+      </when>
+      <when test="searchCondition == 'W'.toString() ">
+      writer like '%'||#{keyword}||'%'
+      </when>
+      <when test="searchCondition == 'TW'.toString() ">
+      (title like '%'||#{keyword}||'%' or writer like '%'||#{keyword}||'%')
+      </when>
+    </choose>
     <![CDATA[
-    where rownum <= 10 
+    and rownum <= 10 
     ]]>
-    order by board_no   
+    </where>
+    order by ${orderBy}
   </select>
 
 </mapper>

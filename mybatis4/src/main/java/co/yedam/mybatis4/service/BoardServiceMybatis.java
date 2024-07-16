@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import co.yedam.mybatis4.common.DataSource;
 import co.yedam.mybatis4.mapper.BoardMapper;
 import co.yedam.mybatis4.vo.BoardVO;
+import co.yedam.mybatis4.vo.SearchVO;
 
 public class BoardServiceMybatis implements BoardService {
 
@@ -14,7 +15,7 @@ public class BoardServiceMybatis implements BoardService {
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 	@Override
-	public List<BoardVO> boardList() {
-		return mapper.boardList();
+	public List<BoardVO> boardList(SearchVO search) {
+		return mapper.boardList(search);
 	}
 }

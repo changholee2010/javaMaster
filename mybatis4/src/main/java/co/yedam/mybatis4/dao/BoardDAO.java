@@ -6,14 +6,16 @@ import java.util.List;
 
 import co.yedam.mybatis4.common.DAO;
 import co.yedam.mybatis4.vo.BoardVO;
+import co.yedam.mybatis4.vo.SearchVO;
 
 public class BoardDAO extends DAO {
-	public List<BoardVO> boardList() {
+	public List<BoardVO> boardList(SearchVO search) {
 		conn = getConn();
-		String sql = "select * from tbl_board where rownum <= 10 order by board_no";
+		String sql = "select * from tbl_board where rownum <= 10 order by ?";
 		List<BoardVO> list = new ArrayList<>();
 		try {
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, search.getOrderBy());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				BoardVO bvo = new BoardVO();
