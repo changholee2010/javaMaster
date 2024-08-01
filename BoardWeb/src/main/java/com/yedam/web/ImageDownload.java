@@ -46,6 +46,7 @@ public class ImageDownload implements Control {
 		int txnCnt = 0; // 처리건수를 확인하고 index로 사용하기.
 
 		ServletInputStream sis = req.getInputStream(); // ajax 호출 시 json 문자열을 읽어들일때 스트림 사용.
+		sis.read();
 		ObjectMapper mapper = new ObjectMapper(); // 스트림에서 문자열을 골라서 객체로 변환하기 위해서 작업.
 		List<Map<String, String>> list = mapper.readValue(sis, //
 				new TypeReference<List<Map<String, String>>>() {
