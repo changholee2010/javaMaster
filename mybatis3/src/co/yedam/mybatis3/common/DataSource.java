@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class DataSource {
 
 	public static SqlSessionFactory getInstance() {
-		String resource = "co/yedam/mybatis-config.xml";
+		String resource = "co/yedam/config/mybatis-config.xml";
 		InputStream inputStream;
 		SqlSessionFactory sqlSessionFactory = null;
 		try {

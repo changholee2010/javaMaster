@@ -5,7 +5,7 @@
 
 <configuration>
 
-	<properties resource="co/yedam/db-config.properties" />
+	<properties resource="co/yedam/config/db-config.properties" />
 
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />

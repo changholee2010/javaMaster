@@ -9,7 +9,7 @@
   </appender>
 
   <logger name="co.yedam.mybatis3.mapper.ProductMapper">
-    <level value="trace"/>
+    <level value="debug"/>
   </logger>
 
   <root level="error">
