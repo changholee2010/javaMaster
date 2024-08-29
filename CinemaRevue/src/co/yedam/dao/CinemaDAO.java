@@ -9,6 +9,31 @@ import co.yedam.vo.ReservationVO;
 
 public class CinemaDAO extends DAO {
 
+	// 좌석의 예약여부 확인하기.
+	public boolean alreadyReservedCheck(ReservationVO rvo) {
+		conn();
+		String sql = "select 1 from tbl_reservation"//
+				+ "   where movie_code=? "//
+				+ "   and   seat_line=? "//
+				+ "   and   seat_no=? ";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, rvo.getMovieCode());
+			psmt.setString(2, rvo.getSeatLine());
+			psmt.setInt(3, rvo.getSeatNo());
+
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disCon();
+		}
+		return false;
+	}
+
 	// 예약.
 	public boolean insertReservation(ReservationVO rvo) {
 		conn();
@@ -25,6 +50,8 @@ public class CinemaDAO extends DAO {
 				return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			disCon();
 		}
 		return false;
 	}
@@ -32,11 +59,13 @@ public class CinemaDAO extends DAO {
 	// 예약목록.
 	public List<ReservationVO> reserveList(String runningRoom) {
 		conn();
-		String sql = "select r.*\r\n"//
-				+ "from tbl_reservation r\r\n"//
-				+ "join tbl_runtime t\r\n"//
-				+ "on r.movie_code = t.movie_code\r\n"//
-				+ "where t.running_type = 'Y'\r\n"//
+		String sql = "select r.movie_code" + "         ,r.reservation_no" + "         ,r.seat_line"
+				+ "         ,r.seat_no" + "         ,r.member_id" + "         ,r.reserve_date"
+				+ "         ,get_movie_name(r.movie_code) movie_name "//
+				+ "from tbl_reservation r "//
+				+ "join tbl_runtime t "//
+				+ "on r.movie_code = t.movie_code "//
+				+ "where t.running_type = 'Y' "//
 				+ "and t.running_room = ?";
 		List<ReservationVO> list = new ArrayList<>();
 
@@ -48,6 +77,7 @@ public class CinemaDAO extends DAO {
 				ReservationVO rvo = new ReservationVO();
 				rvo.setMemberId(rs.getString("member_id"));
 				rvo.setMovieCode(rs.getString("movie_code"));
+				rvo.setMovieName(rs.getString("movie_name"));
 				rvo.setReservationNo(rs.getInt("reservation_no"));
 				rvo.setReserveDate(rs.getDate("reserve_date"));
 				rvo.setSeatLine(rs.getString("seat_line"));

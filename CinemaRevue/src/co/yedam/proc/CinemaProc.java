@@ -28,10 +28,13 @@ public class CinemaProc {
 		// }
 	} // end of exe().
 
+	// 상영관번호를 기반으로 예약좌석 예매하기.
 	void reserveMovie(int runningRoom) {
 		List<ReservationVO> rlist = null;
 
 		rlist = cdao.reserveList(runningRoom + "");
+
+		showRunningMovieInfo(runningRoom);
 		showReserveSeat(rlist);
 
 		String sline = ScanUtils.chooseVal("좌석선택");
@@ -44,9 +47,17 @@ public class CinemaProc {
 			rvo.setSeatLine(sline);
 			rvo.setSeatNo(sno);
 
+			if (cdao.alreadyReservedCheck(rvo)) {
+				System.out.println("이미 예약이 된 자리입니다.");
+				showRunningMovieInfo(runningRoom);
+				showReserveSeat(rlist);
+				return;
+			}
+
 			if (cdao.insertReservation(rvo)) {
 				System.out.println("예약이 완료되었습니다.");
 				rlist = cdao.reserveList(runningRoom + "");
+				showRunningMovieInfo(runningRoom);
 				showReserveSeat(rlist);
 			}
 		} else {
@@ -55,12 +66,16 @@ public class CinemaProc {
 
 	} // end of reserveMovie.
 
+	void showRunningMovieInfo(int runningRoom) {
+		System.out.println("================================================================");
+		System.out.print("               " + runningRoom + "관 " + cdao.getRunningMovie(runningRoom).getMovieName());
+	}
+
 	void showReserveSeat(List<ReservationVO> rlist) {
 
 		String[] lineAry = { "A", "B", "C", "D" };
 
-		System.out.println("================================================================");
-		System.out.println("               1관 범죄도시 (전체 40/ 예약 5)");
+		System.out.println("           (전체 40/ 예약 " + rlist.size() + ")");
 		System.out.println("----------------------------------------------------------------");
 
 		for (int i = 0; i < lineAry.length; i++) {
@@ -93,6 +108,7 @@ public class CinemaProc {
 		}
 	}
 
+	// 상영관 보여주기.
 	int printMovie() {
 		List<MovieVO> list = cdao.runningMovieList();
 		String movie = "-----------------------------------------------------------\r\n";//
