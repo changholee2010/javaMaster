@@ -23,27 +23,29 @@ public class LoginControl implements Control {
 
 		BoardService svc = new BoardServiceImpl();
 		MemberVO mvo = svc.login(id, pw);
+		mvo = new MemberVO();
+		mvo.setUserId("test");
+		mvo.setResponsibility("User");
 
-		if (mvo != null) {
-			HttpSession session = req.getSession();
-			session.setAttribute("logId", mvo.getUserId());
+//		if (mvo == null) {
+//			resp.sendRedirect("logForm.do");
+//		}
 
-			// 관리자, 회원.
-			if (mvo.getUserResp().equals("Admin"))
-				resp.sendRedirect("memberList.do");
-			else {
-				String reqPath = (String) session.getAttribute("reqPath");
-				if (reqPath != null) {
-					resp.sendRedirect(reqPath);
-					return;
-				}
-				resp.sendRedirect("main.do");
+		HttpSession session = req.getSession();
+		session.setAttribute("logId", mvo.getUserId());
+
+		// 관리자, 회원.
+		if (mvo.getResponsibility().equals("Admin"))
+			resp.sendRedirect("memberList.do");
+		else {
+			String reqPath = (String) session.getAttribute("reqPath");
+			if (reqPath != null) {
+				resp.sendRedirect(reqPath);
+				return;
 			}
-
-		} else {
-			resp.sendRedirect("logForm.do");
-
+			resp.sendRedirect("main.do");
 		}
+
 	}
 
 }

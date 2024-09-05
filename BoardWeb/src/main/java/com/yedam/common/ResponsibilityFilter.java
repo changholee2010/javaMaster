@@ -11,7 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ResponseFilter implements Filter {
+public class ResponsibilityFilter implements Filter {
 	String resp;
 
 	@Override

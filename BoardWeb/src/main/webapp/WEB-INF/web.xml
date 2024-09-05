@@ -25,7 +25,7 @@
 
 	<filter>
 		<filter-name>respFilter</filter-name>
-		<filter-class>com.yedam.common.ResponseFilter</filter-class>
+		<filter-class>com.yedam.common.ResponsibilityFilter</filter-class>
 		<init-param>
 			<param-name>response</param-name>
 			<param-value>/addForm.do</param-value>
