@@ -24,7 +24,7 @@
 	</filter-mapping>
 
 	<filter>
-		<filter-name>respFilter</filter-name>
+		<filter-name>Responsibility check Filter</filter-name>
 		<filter-class>com.yedam.common.ResponseFilter</filter-class>
 		<init-param>
 			<param-name>response</param-name>
@@ -32,7 +32,7 @@
 		</init-param>
 	</filter>
 	<filter-mapping>
-		<filter-name>respFilter</filter-name>
+		<filter-name>Responsibility check Filter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
 
