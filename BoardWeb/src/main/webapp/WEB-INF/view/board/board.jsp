@@ -5,14 +5,17 @@
   div.reply div {
     margin: auto;
   }
+
   div.reply ul {
     list-style-type: none;
     margin-top: 5px;
   }
+
   div.reply li {
     padding-top: 1px;
     padding-bottom: 1px;
   }
+
   div.reply span {
     display: inline-block;
   }
@@ -67,14 +70,16 @@
   </c:otherwise>
 </c:choose>
 
-<!-- 댓글목록. -->
+<!-- 댓글관련. -->
 <div class="container reply">
 
+  <!-- 댓글등록 -->
   <div class="header">
     <input class="col-sm-8" id="reply">
     <button class="col-sm-3" id="addReply">댓글등록</button>
   </div>
 
+  <!-- 댓글목록 -->
   <div class="content">
     <ul>
       <li>
@@ -94,8 +99,9 @@
       </li>
     </ul>
 
-  </div> <!-- div.content -->
-  
+  </div>
+
+  <!-- 댓글페이징 -->
   <div class="footer">
     <div class="center">
       <div class="pagination">
@@ -106,7 +112,8 @@
       </div>
     </div>
   </div>
-</div> <!-- div.container.reply -->
+</div>
+<!-- div.container.reply -->
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
