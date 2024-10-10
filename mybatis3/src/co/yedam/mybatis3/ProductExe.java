@@ -24,37 +24,40 @@ public class ProductExe {
 		boolean run = true;
 
 		while (run) {
-			System.out.println("1.목록 2.등록 3.수정 4.삭제 9.이전");
+			System.out.println("-------------------------------------");
+			System.out.println("1.목록 2.등록 3.수정 4.삭제 9.상위메뉴로 이동");
+			System.out.println("-------------------------------------");
 			System.out.print("선택>> ");
+
 			int menu = Integer.parseInt(scn.nextLine());
+
 			switch (menu) {
 			case 1:
+				AppMain.scr("상품목록을 선택했습니다.");
 				list();
 				break;
 			case 2:
+				AppMain.scr("상품등록을 선택했습니다.");
 				add();
 				break;
 			case 3:
+				AppMain.scr("상품수정을 선택했습니다.");
 				modify();
 				break;
 			case 4:
+				AppMain.scr("상품삭제를 선택했습니다.");
 				remove();
 				break;
 			case 5:
 				search();
 				break;
 			case 9:
-				System.out.println("종료합니다.");
-				break;
+				AppMain.scr("상위메뉴로 이동합니다.");
+				return;
 			default:
 				System.out.println("메뉴를 다시 선택하세요!");
 			}
 		}
-	}
-
-	void menu() {
-		System.out.println("1.목록 2.등록 3.수정 4.삭제 5.조회 9.이전");
-		System.out.print("선택>> ");
 	}
 
 	// 목록.

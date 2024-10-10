@@ -25,6 +25,7 @@
 
 	<mappers>
 		<mapper resource="co/yedam/mybatis3/mapper/ProductMapper.xml" />
+		<mapper resource="co/yedam/mybatis3/mapper/TxnMapper.xml" />
 	</mappers>
 
 </configuration>
