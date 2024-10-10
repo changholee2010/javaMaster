@@ -10,7 +10,6 @@ public class ProductExe {
 	private static ProductExe instance = new ProductExe();
 
 	private ProductExe() {
-
 	}
 
 	public static ProductExe getInstance() {
@@ -25,7 +24,7 @@ public class ProductExe {
 		boolean run = true;
 
 		while (run) {
-			System.out.println("1.목록 2.등록 3.수정 4.삭제 5.조회 9.이전");
+			System.out.println("1.목록 2.등록 3.수정 4.삭제 9.이전");
 			System.out.print("선택>> ");
 			int menu = Integer.parseInt(scn.nextLine());
 			switch (menu) {

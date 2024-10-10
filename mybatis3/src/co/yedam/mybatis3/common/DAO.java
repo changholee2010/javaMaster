@@ -18,8 +18,8 @@ public class DAO {
 			// 연결하기
 			conn = DriverManager.getConnection(//
 					"jdbc:oracle:thin:@localhost:1521/xe", //
-					"jsp", //
-					"jsp"//
+					"java", //
+					"1234"//
 			);
 		} catch (Exception e) {
 			e.printStackTrace();
