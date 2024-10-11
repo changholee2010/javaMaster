@@ -17,8 +17,8 @@ public class ProductExe {
 	}
 
 	Scanner scn = new Scanner(System.in);
-	ProdService svc = new ProdServiceDAO();
-//	ProdService svc = new ProdServiceMybatis();
+//	ProdService svc = new ProdServiceDAO();
+	ProdService svc = new ProdServiceMybatis();
 
 	public void start() {
 		boolean run = true;

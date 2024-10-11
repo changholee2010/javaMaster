@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import co.yedam.mybatis3.common.SearchDTO;
+import co.yedam.mybatis3.common.Utils;
 import co.yedam.mybatis3.service.TxnService;
 import co.yedam.mybatis3.service.TxnServiceMybatis;
 import co.yedam.mybatis3.vo.ProductVO;
@@ -15,6 +16,8 @@ import co.yedam.mybatis3.vo.ProductVO;
 // 입출고 처리.
 // 1.입고 2.출고 3.재고 9.상위
 public class TxnExe {
+
+	// 싱글톤 방식으로 생성.
 	private static TxnExe instance = new TxnExe();
 
 	private TxnExe() {
@@ -31,7 +34,7 @@ public class TxnExe {
 
 	void start() {
 		boolean run = true;
-//		AppMain.scr("");
+
 		while (run) {
 			System.out.println("-------------------------------");
 			System.out.println("1.입고 2.출고 3.재고 9.상위메뉴로 이동");
@@ -63,6 +66,7 @@ public class TxnExe {
 	} // end of exe()
 
 	void receipt() {
+		int rowCnt = 1;
 		System.out.print("입고할 상품코드>> ");
 		String prodCode = scn.nextLine();
 		search.setProdCode(prodCode);
@@ -73,12 +77,16 @@ public class TxnExe {
 			System.out.println("목록이 없습니다.");
 			return;
 		}
-		System.out.println("  상품코드   상품명     가격");
-		System.out.println("-------------------------");
+		System.out.println("순번  상품코드   상품명        가격");
+		System.out.println("--------------------------------");
 		for (ProductVO pvo : list) {
-			System.out.println(
-					String.format(" %5s  %10s  %5d\n", pvo.getProdCode(), pvo.getProdName(), pvo.getSellingPrice()));
+			System.out.print(String.format("%3d ", rowCnt++));
+			Utils.printWidth(5, " " + pvo.getProdCode());
+			Utils.printWidth(15, "   " + pvo.getProdName());
+			System.out.print(String.format(" %5d\n", pvo.getSellingPrice()));
 		}
+
+		System.out.print("입고할 상품코드>> ");
 		prodCode = scn.nextLine();
 		System.out.print("입고할 상품수량>> ");
 		int prodQty = Integer.parseInt(scn.nextLine());
@@ -102,8 +110,10 @@ public class TxnExe {
 		System.out.println("상품코드    상품명          상품설명                  재고");
 		System.out.println("---------------------------------------------------");
 		svc.onhandList(search).forEach(product -> {
-			System.out.println(String.format("%5s %10s %20s %3d", product.getProdCode()//
-					, product.getProdName(), product.getProdDesc(), product.getQty()));
+			System.out.print(String.format("%5s", product.getProdCode()));
+			Utils.printWidth(15, "  " + product.getProdName());
+			Utils.printWidth(26, "  " + product.getProdDesc());
+			System.out.print(String.format(" %3d\n", product.getQty()));
 		});
 		System.out.println("---------------------------------------------------");
 	}

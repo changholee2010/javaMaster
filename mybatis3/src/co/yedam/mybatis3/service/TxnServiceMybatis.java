@@ -5,12 +5,14 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import co.yedam.mybatis3.common.CustomLogger;
 import co.yedam.mybatis3.common.DataSource;
 import co.yedam.mybatis3.common.SearchDTO;
 import co.yedam.mybatis3.mapper.TxnMapper;
 import co.yedam.mybatis3.vo.ProductVO;
 
 public class TxnServiceMybatis implements TxnService {
+
 	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	TxnMapper mapper = sqlSession.getMapper(TxnMapper.class);
 
@@ -23,7 +25,7 @@ public class TxnServiceMybatis implements TxnService {
 	public List<ProductVO> searchProduct(SearchDTO search) {
 		return mapper.searchList(search);
 	}
-	
+
 	@Override
 	public List<ProductVO> onhandList(SearchDTO search) {
 		return mapper.onhandList(search);
