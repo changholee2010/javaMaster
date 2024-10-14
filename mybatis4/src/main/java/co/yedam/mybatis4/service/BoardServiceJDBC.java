@@ -6,7 +6,7 @@ import co.yedam.mybatis4.dao.BoardDAO;
 import co.yedam.mybatis4.vo.BoardVO;
 import co.yedam.mybatis4.vo.SearchVO;
 
-public class BoardServiceImpl implements BoardService {
+public class BoardServiceJDBC implements BoardService {
 	BoardDAO bdao = new BoardDAO();
 
 	@Override

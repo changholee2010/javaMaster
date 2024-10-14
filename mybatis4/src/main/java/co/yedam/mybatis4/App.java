@@ -1,7 +1,7 @@
 package co.yedam.mybatis4;
 
 import co.yedam.mybatis4.service.BoardService;
-import co.yedam.mybatis4.service.BoardServiceImpl;
+import co.yedam.mybatis4.service.BoardServiceJDBC;
 import co.yedam.mybatis4.service.BoardServiceMybatis;
 import co.yedam.mybatis4.vo.SearchVO;
 
